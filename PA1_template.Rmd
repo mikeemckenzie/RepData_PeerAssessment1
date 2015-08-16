@@ -33,7 +33,7 @@ For this part of the assignment, you can ignore the missing values in the datase
 sumStepsAllDays <- tapply(act1$steps, act1$date, sum)
 sumStepsAllDays2<- as.table(sumStepsAllDays)
 # histogram of number of steps per day
-hist(sumStepsAllDays, breaks = 20)
+hist(sumStepsAllDays, breaks = 20, xlab="Sum of Steps per day", ylab="Number of days")
 # median steps:
 medianSteps<- median(sumStepsAllDays, na.rm = T)
 medianSteps
@@ -50,7 +50,7 @@ What is the average daily activity pattern?
 ```{r plot2}
 stepsPerInterval <- tapply(act1$steps, act1$interval, mean, na.rm=T)
 # number of average steps per five-minute time interval: 
-plot(act1$interval[1:288], stepsPerInterval, type = "l")
+plot(act1$interval[1:288], stepsPerInterval, type = "l", xlab="time interval", ylab="number of steps")
 
 # same plot alternatively with ggplot:
 library(ggplot2)
@@ -65,7 +65,8 @@ ggplot(data = plt2, aes(x = interval, y = meanSteps)) + geom_line()
 # the maximum number of steps is at the time interval 8:35-8:40am: 
 plt2$interval[which(grepl(max(plt2$meanSteps), plt2$meanSteps))]
 ```
-The user is most active in the mornings (around 8-9am). 
+On average, the user is most active in the mornings (around 8-9am)! 
+
 
 
 
